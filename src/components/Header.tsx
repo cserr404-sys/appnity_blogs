@@ -1,8 +1,12 @@
 "use client";
 
-import { Bell, Search, UserCircle } from "lucide-react";
+import { Bell, Search, UserCircle, LayoutGrid, List } from "lucide-react";
 
-const Header = () => {
+interface HeaderProps {
+  setLayout: (layout: "grid" | "list") => void;
+}
+
+const Header = ({ setLayout }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between p-4 bg-card text-card-foreground border-b border-border">
       <div className="flex items-center space-x-4">
@@ -16,6 +20,12 @@ const Header = () => {
         </div>
       </div>
       <div className="flex items-center space-x-4">
+        <button onClick={() => setLayout("grid")}>
+          <LayoutGrid />
+        </button>
+        <button onClick={() => setLayout("list")}>
+          <List />
+        </button>
         <Bell className="cursor-pointer" />
         <UserCircle className="cursor-pointer" />
       </div>
